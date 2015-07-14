@@ -2,7 +2,7 @@
 
 <% if @track && @track.errors.any? %>
 <ul>
- <% @tracks.errors.full_messages.each do |message| %>
+ <% @track.errors.full_messages.each do |message| %>
  <li> <%= message %> </li>
  <% end %>
 </ul>
@@ -11,33 +11,50 @@
  
 
 <form method='post' action='/tracks'> 
+  <fieldset>
+    <legend>Add Your Track Below!</legend>
   <div>  
     <label>Song Title</label>
       <br>
-      <input type="text" name="song_title" value= "<%= @track && @track.song_title %>">
+      <input type="text" name="song_title" value= "<%= @track && @track.song_title %>" placeholder="Type something...">
       <br>
   </div>
+  <br>
   <div>
     <label>Artist</label>
       <br>
       <input type="text" name="author" value="<%= @track && @track.author %>">
       <br>
   </div>
+  <br>
   <div>
     <label>URL</label>
+    <br>
       <input type="text" name="url" value = "<%= @track && @track.url %>">
   </div>
+  <br>
 
   <div>
-    <label>Submit</label>
+    
       <input type="submit" value="Submit">
   </div>
+  </fieldset>
 </form>
 
 
 
 
-
-
-
+<!-- <form>
+  <fieldset>
+    
+<!-    <label>Label name</label>
+    <input type="text" placeholder="Type something…"> -->
+ <!--    <span class="help-block">Example block-level help text here.</span>
+    <label class="checkbox">
+      <input type="checkbox"> Check me out
+    </label>
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
+</form> -->
+ 
 
