@@ -1,4 +1,11 @@
 # Homepage (Root path)
+
+configure do 
+  enable :sessions
+  
+end
+
+
 get '/' do
   erb :index
 end
@@ -25,3 +32,23 @@ post '/tracks' do
     erb :'new_track'
   end 
 end
+
+get '/login' do 
+  erb :login
+end
+
+
+post '/login' do 
+  user = User.find_by(email: params[:email]) 
+  if user.password == params[:password]
+    redirect '/tracks'
+  #   session[:user_id] = user.id
+  else
+    erb :login
+  end
+end
+
+
+
+
+
