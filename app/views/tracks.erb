@@ -1,11 +1,15 @@
 <h1> All Tracks </h1>
-
-  <% @tracks.each do |track| %>
   <ul>
+  <% @tracks.each do |track| %>
+  
   <li><%=  "Title: #{track.song_title} | Artist: #{track.author}" %>
-  <br>   
+  <br> 
+      <% if session[:user_id] %>
+      <%= "Added by: #{track.user.email}" %>
+      <% end %>
   </li> 
-  </ul>
+ 
   
 
  <% end %>
+ </ul>

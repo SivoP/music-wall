@@ -2,8 +2,6 @@
 
 configure do 
   enable :sessions
-  # set :email, params[:email]
-  # set :password, params[:password] 
 end
 
 
@@ -36,9 +34,9 @@ post '/tracks' do
   end 
 end
 
-get '/tracks/loggedin/?' do  
+get '/tracks/?' do  
   @tracks = Track.all
-  erb :'tracks_logged_in'
+  erb :'tracks'
 end
 
 get '/login' do 
@@ -50,8 +48,8 @@ end
 post '/login' do 
   @user = User.find_by(email: params[:email]) 
   if @user.password == params[:password]
-    redirect '/tracks/loggedin'
-    session[:user_id] = user.id
+    session[:user_id] = @user.id
+    redirect '/tracks/?'
   else
     erb :login
   end
@@ -62,6 +60,8 @@ get '/logout' do
   session.clear
   redirect '/tracks'
 end
+
+
 
 
 
