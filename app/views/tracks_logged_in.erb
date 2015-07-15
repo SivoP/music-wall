@@ -1,0 +1,11 @@
+<h1> HERE ARE YOUR TRACKS </h1>
+
+  <% @tracks.each do |track| %>
+  <ul>
+  <li><%=  "Title: #{track.song_title} | Artist: #{track.author}" %>  </li> 
+  </ul>
+ <% end %>
+
+<form action="/tracks" method="get">
+<button type="submit"> Logout </button>
+</form>
