@@ -9,6 +9,18 @@ get '/' do
   erb :index
 end
 
+get '/signup' do 
+  erb :signup
+end
+
+post '/signup' do 
+  @user = User.create(
+    email: params[:email],
+    password: params[:password]
+    )
+  redirect '/login'
+end
+
 
 
 get '/tracks/?' do
@@ -26,7 +38,8 @@ post '/tracks' do
   @track = Track.new(
     song_title: params[:song_title],
     author: params[:author],
-    url: params[:url])
+    url: params[:url],
+    user_id: session[:user_id])
   if @track.save
     redirect '/tracks'
   else
@@ -60,11 +73,3 @@ get '/logout' do
   session.clear
   redirect '/tracks'
 end
-
-
-
-
-
-
-
-
